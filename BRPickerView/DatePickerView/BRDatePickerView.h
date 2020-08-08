@@ -46,7 +46,10 @@ typedef NS_ENUM(NSInteger, BRDatePickerMode) {
     /** 【HH:mm】时分 */
     BRDatePickerModeHM,
     /** 【mm:ss】分秒 */
-    BRDatePickerModeMS
+    BRDatePickerModeMS,
+    /** 年月日 时 分 秒*/
+    BRDatePickerModeLGJCustom1
+    //demo里修改 poddev里修改同步到demo ping
 };
 
 /// 日期单位显示的位置
