@@ -28,6 +28,8 @@ typedef void(^BRStringResultModelArrayBlock)(NSArray <BRResultModel *> * _Nullab
 
 @interface BRStringPickerView : BRBaseView
 
+/** 选择器 */
+@property (nonatomic, strong) UIPickerView *pickerView;
 /**
  //////////////////////////////////////////////////////////////////////////
  ///

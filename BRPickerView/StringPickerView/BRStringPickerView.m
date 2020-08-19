@@ -13,8 +13,7 @@
 {
     BOOL _dataSourceException; // 数据源格式是否有误
 }
-/** 选择器 */
-@property (nonatomic, strong) UIPickerView *pickerView;
+
 /** 单列选择的值 */
 @property (nonatomic, copy) NSString *mSelectValue;
 /** 多列选择的值 */
