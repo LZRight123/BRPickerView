@@ -13,8 +13,7 @@
 {
     BOOL _dataSourceException; // 数据源格式是否有误
 }
-/** 选择器 */
-@property (nonatomic, strong) UIPickerView *pickerView;
+
 /** 单列选择的值 */
 @property (nonatomic, copy) NSString *mSelectValue;
 /** 多列选择的值 */
@@ -194,13 +193,9 @@
         BRResultModel *selectModel = nil;
         BOOL hasNext = YES;
         NSInteger i = 0;
-
-        NSMutableArray *dataArr = [self.dataSourceArr mutableCopy];
-        
         do {
-            NSArray *nextArr = [self getNextDataArr:dataArr selectModel:selectModel];
-            // 设置 numberOfComponents，防止 key 等于 parentKey 时进入死循环
-            if (nextArr.count == 0 || i > self.numberOfComponents - 1) {
+            NSArray *nextArr = [self getNextDataArr:self.dataSourceArr selectModel:selectModel];
+            if (nextArr.count == 0) {
                 hasNext = NO;
                 break;
             }
@@ -213,7 +208,7 @@
             
             [selectIndexs addObject:@(selectIndex)];
             [mDataSourceArr addObject:nextArr];
-
+            
             i++;
             
         } while (hasNext);
@@ -225,9 +220,9 @@
 
 - (NSArray <BRResultModel *>*)getNextDataArr:(NSArray *)dataArr selectModel:(BRResultModel *)selectModel {
     NSMutableArray *tempArr = [[NSMutableArray alloc]init];
-    // parentKey = @"-1"，表示是第一列数据
-    NSString *key = selectModel ? selectModel.key : @"-1";
     for (BRResultModel *model in dataArr) {
+        // parentKey = @"-1"，表示是第一列数据
+        NSString *key = selectModel ? selectModel.key : @"-1";
         if ([model.parentKey isEqualToString:key]) {
             [tempArr addObject:model];
         }
@@ -560,7 +555,7 @@
             if (self.resultModelBlock) {
                 self.resultModelBlock([self getResultModel]);
             }
-        } else if (self.pickerMode == BRStringPickerComponentMulti || self.pickerMode == BRStringPickerComponentLinkage) {
+        } else if (self.pickerMode == BRStringPickerComponentMulti) {
             if (self.resultModelArrayBlock) {
                 self.resultModelArrayBlock([self getResultModelArr]);
             }
@@ -621,13 +616,6 @@
         _mSelectValues = [NSArray array];
     }
     return _mSelectValues;
-}
-
-- (NSInteger)numberOfComponents {
-    if (_numberOfComponents <= 0) {
-        _numberOfComponents = 3;
-    }
-    return _numberOfComponents;
 }
 
 @end

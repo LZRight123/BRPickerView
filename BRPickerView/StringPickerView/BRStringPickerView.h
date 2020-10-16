@@ -28,6 +28,8 @@ typedef void(^BRStringResultModelArrayBlock)(NSArray <BRResultModel *> * _Nullab
 
 @interface BRStringPickerView : BRBaseView
 
+/** 选择器 */
+@property (nonatomic, strong) UIPickerView *pickerView;
 /**
  //////////////////////////////////////////////////////////////////////////
  ///
@@ -76,12 +78,6 @@ typedef void(^BRStringResultModelArrayBlock)(NSArray <BRResultModel *> * _Nullab
 @property (nullable, nonatomic, copy) BRStringResultModelBlock changeModelBlock;
 /** 滚动选择时触发的回调【多列】 */
 @property (nullable, nonatomic, copy) BRStringResultModelArrayBlock changeModelArrayBlock;
-
-/**
- *  最大层级数(列数) for `BRStringPickerComponentLinkage`, ignored otherwise.
- *  使用场景：默认可选，当数据源中有 key 等于 parentKey 情况时，必须要设置
- */
-@property (nonatomic, assign) NSInteger numberOfComponents;
 
 /// 初始化字符串选择器
 /// @param pickerMode 字符串选择器显示类型
