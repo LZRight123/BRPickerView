@@ -22,10 +22,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
     UIDatePickerMode _datePickerMode;
     UIView *_containerView;
 }
-/** 时间选择器1 */
-@property (nonatomic, strong) UIDatePicker *datePicker;
-/** 时间选择器2 */
-@property (nonatomic, strong) UIPickerView *pickerView;
 
 /// 日期存储数组
 @property(nonatomic, copy) NSArray *yearArr;

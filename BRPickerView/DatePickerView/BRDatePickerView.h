@@ -80,6 +80,10 @@ typedef void (^BRDateResultBlock)(NSDate * _Nullable selectDate, NSString * _Nul
  ///    特点：灵活，扩展性强（推荐使用！）
  ///
  ////////////////////////////////////////////////////////////////////////*/
+/** 时间选择器1 */
+@property (nonatomic, strong) UIDatePicker *datePicker;
+/** 时间选择器2 */
+@property (nonatomic, strong) UIPickerView *pickerView;
 
 /** 日期选择器显示类型 */
 @property (nonatomic, assign) BRDatePickerMode pickerMode;
